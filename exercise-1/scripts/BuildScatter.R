@@ -8,3 +8,14 @@
 #   - Title of the plot (set a default of "Title")
 #   - Label for the x axis (set a default of "X Title")
 #   - Label for the y axis (set a default of "Y Title")
+
+library(ggplot2)
+
+BuildScatter <- function(data, x, y, colorVar, title = "title", xtitle = "xtitle", ytitle = "ytitle") {
+  plot <- ggplot(data = data) + 
+    geom_point(mapping = aes(x = data[,x], y=data[,y], color = data[,colorVar])) + 
+    labs(title = title, x = xtitle, y = ytitle)
+  
+  # Return plot
+  return(plot)
+}
